@@ -1,14 +1,21 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        seen = {}
-        l = 0
-        length = 0
-        for r in range(len(s)):
-            char = s[r]
-            if char in seen and seen[char] >= l:
-                l = seen[char] + 1
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        count = defaultdict(int)
+        result = 0
+        l,r=0,0
+        while r<len(s) and l<=r:
+            print(count)
+            print(count[s[r]])
+            if count[s[r]] == 1:
+                print(s[r])
+                # print(count)
+                result = max(result,r-l)
+                while count[s[r]]==1:
+                    count[s[l]] -= 1
+                    l+=1
             else:
-                length = max(length, r - l + 1)
-            seen[char] = r
+                count[s[r]] +=1
+                r+=1
+        return result
 
-        return length
+        
