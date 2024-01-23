@@ -3,12 +3,12 @@ class Solution:
         count = defaultdict(int)
         result = 0
         l,r=0,0
-        while r<len(s) and l<=r:
-            print(count)
-            print(count[s[r]])
+        while r<=len(s) and l<=r:
+            if r == len(s):
+                result = max(result,r-l)
+                break
             if count[s[r]] == 1:
-                print(s[r])
-                # print(count)
+
                 result = max(result,r-l)
                 while count[s[r]]==1:
                     count[s[l]] -= 1
