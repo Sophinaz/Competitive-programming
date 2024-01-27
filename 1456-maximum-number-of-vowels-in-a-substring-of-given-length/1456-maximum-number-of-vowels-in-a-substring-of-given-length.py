@@ -12,13 +12,10 @@ class Solution:
                 result = max(result, count)
                 continue
             result = max(result, count)
-            if s[l] in vowels:
-                count -= 1
+            if s[l] in vowels: count -= 1
             l += 1
             if s[r] in vowels:
                 count += 1
-                if r == len(s)-1: result = max(result, count)
-            else:
-                result = max(result, count)
+            result = max(result, count)
             r += 1
         return result
