@@ -1,7 +1,7 @@
 class Solution:
     def maxVowels(self, s: str, k: int) -> int:
         l, r = 0, 0
-        vowels = ["a", "e", "i", "o", "u"]
+        vowels = "aeiou"
         result, count = 0, 0
         while r < len(s):
             if r - l < k:
