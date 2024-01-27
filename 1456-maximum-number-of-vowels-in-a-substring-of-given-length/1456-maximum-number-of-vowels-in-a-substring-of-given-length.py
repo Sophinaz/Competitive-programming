@@ -17,7 +17,7 @@ class Solution:
             l += 1
             if s[r] in vowels:
                 count += 1
-                result = max(result, count)
+                if r == len(s)-1: result = max(result, count)
             else:
                 result = max(result, count)
             r += 1
