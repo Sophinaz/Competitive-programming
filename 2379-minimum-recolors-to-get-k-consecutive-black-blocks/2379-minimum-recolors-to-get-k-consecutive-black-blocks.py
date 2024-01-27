@@ -6,7 +6,9 @@ class Solution:
             
             if blocks[r] == 'W':
                 pas+=1
-            r+=1
+                r+=1
+            else:
+                r+=1
             if r-l == k:
                 result = min(result, pas)
                 if blocks[l] == 'W': pas -= 1
