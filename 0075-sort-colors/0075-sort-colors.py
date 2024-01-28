@@ -7,9 +7,8 @@ class Solution:
         for i in nums:
             tracker[i] += 1
         idx = 0
-        cummulative = 0
         for i in tracker:
-            nums[idx:idx+tracker[i]] = [i]*tracker[i]
-            cummulative += tracker[i]
-            idx = cummulative
+            for j in range(tracker[i]):
+                nums[idx] = i
+                idx+=1
         return nums
