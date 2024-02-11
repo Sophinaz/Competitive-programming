@@ -8,12 +8,12 @@ class Solution:
         
         left = 0
         result = max(result,total)
-        print(result)
+        
         for right in range(k,len(s)):
             if s[right] in vowels: total += 1
+            
             if s[left] in vowels: total -= 1
             left += 1
-            print(total)
             result = max(result,total)
 
         return result 
