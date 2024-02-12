@@ -3,21 +3,26 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+class Node:
+    def __init__(self,val = None):
+        self.val = val
+        self.next  = None
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        count = 0
+        node = Node()
+        node.next = head
         curr = head
+        count = 0
+        
         while curr:
             curr = curr.next
             count += 1
-        curr = head
+        curr = node
         
-        if n == count: 
-            head = curr.next
-            curr.next = None
-            return head
-        for i in range(count - n-1):
+        for i in range(count - n):
             curr = curr.next
         
         curr.next = curr.next.next
-        return head
+        
+        if node.next: return node.next
+        else: return 
