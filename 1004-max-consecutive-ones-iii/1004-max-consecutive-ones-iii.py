@@ -6,10 +6,8 @@ class Solution:
             r = 0
             count = {0:0 , 1:0}
             while r < len(nums):
-                if nums[r] in count:
-                    count[nums[r]] += 1
-                else:
-                    count[nums[r]] = 1
+                count[nums[r]] += 1
+                
                 if r-l+1 - count[1] <= k:
                     result = max(result,r-l+1)
                     r+=1
