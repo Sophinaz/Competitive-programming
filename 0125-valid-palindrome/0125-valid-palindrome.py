@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: bool
         """
         s1 = ''
-        s = s.lower
+        s = s.lower()
         for c in s:
             if c.isalnum():
                 s1 += c
