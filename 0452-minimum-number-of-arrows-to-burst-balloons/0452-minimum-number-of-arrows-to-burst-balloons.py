@@ -1,8 +1,7 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         nums = sorted(points)
-        print(nums)
-        left,right,result = 0,0,0
+        left,right,result = 0,1,0
         n = len(nums)
         
         while right < n:
