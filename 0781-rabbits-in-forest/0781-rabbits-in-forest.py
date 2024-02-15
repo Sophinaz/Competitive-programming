@@ -8,8 +8,8 @@ class Solution:
             if i not in track and i != 0:
                 track[i] = i
                 result += i+1
-            elif i == 0:
-                result += 1
+            elif i == 0: result += 1
+            
             else: 
                 track[i] -= 1
                 if track[i] == 0: track.pop(i)
