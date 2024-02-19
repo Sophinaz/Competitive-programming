@@ -33,7 +33,6 @@ class Solution:
         for i in range(n):
             x = right[i]
             y = left[i]
-            print(x,y)
             if x == -1: x = n - i
             if y == -1: y = i+1
             result += (x*y*nums[i])
