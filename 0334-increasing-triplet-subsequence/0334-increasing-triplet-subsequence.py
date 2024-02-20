@@ -12,4 +12,3 @@ class Solution:
             elif i < second:
                 second = i
         return False
-
