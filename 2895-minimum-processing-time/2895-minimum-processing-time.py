@@ -1,21 +1,14 @@
 class Solution:
     def minProcessingTime(self, processorTime: List[int], tasks: List[int]) -> int:
-        processorTime = sorted(processorTime,reverse=True)
-        tasks = sorted(tasks)
-        allocation = {}
-        l,c = 0,0
-        r=4
-        result = []
-        for i in range(len(processorTime)):
-            allocation[processorTime[c]] = tasks[l:r]
-            print(tasks[l:r])
-            l+=4
-            r+=4
-            c+=1
-            
-        for i in allocation:
-            result.append(i + max(allocation[i]))
-        return max(result)
+        processorTime = sorted(processorTime)
+        tasks = sorted(tasks,reverse = True)
+        result = 0
+        idx = 0
+        for i in processorTime:
+            result = max(result,i + tasks[idx])
+            idx+=4
+
+        return result
 
 
         
