@@ -12,7 +12,7 @@ class Solution:
         if p == None and q or q == None and p:
             self.answer = False
             return self.answer
-        if p == None and q == None: return 
+        if p == None and q == None: return self.answer
         
         if p.val != q.val:
             self.answer = False
