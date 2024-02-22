@@ -7,11 +7,12 @@
 class Solution:
     def __init__(self):
         self.answer = True
+    
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         if p == None and q or q == None and p:
             self.answer = False
             return self.answer
-        if p == None or q == None: return self.answer
+        if p == None and q == None: return self.answer
         
         if p.val != q.val:
             self.answer = False
