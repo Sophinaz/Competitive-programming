@@ -1,18 +1,15 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         answer = []
-        path = []
-        def comb(num):
+        def comb(num,path):
             if len(path) == k: 
-                answer.append(path.copy())
+                answer.append(path)
                 return
 
             for i in range(num+1,n+1):
                 path.append(i)
-                
-                comb(i)
-                
+                comb(i,path[:])               
                 path.pop()
 
             return answer
-        return comb(0)
+        return comb(0,[])
