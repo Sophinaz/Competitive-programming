@@ -14,10 +14,11 @@ class Solution:
                 if total + node.val == targetSum:
                     result.append(path[:] + [node.val])
                     return 
-            path = path[:] + [node.val] 
+            path.append(node.val)
             
             paths(node.left, total + node.val, path)
             paths(node.right, total + node.val, path)
+            path.pop()
         
         paths(root, 0, [])
         return result
