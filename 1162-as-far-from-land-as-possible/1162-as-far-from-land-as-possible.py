@@ -13,7 +13,7 @@ class Solution:
                     que.append((i,j))
                     later.append((i,j))
                     visited[i][j] = True
-        if not later: return -1
+        if not later or len(later) == len(grid) ** 2: return -1
         level = 0
         while que:
             for _ in range(len(que)):
