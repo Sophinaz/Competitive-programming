@@ -1,12 +1,13 @@
-class Solution(object):
-    def twoSum(self, nums, target):
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        track = defaultdict(int)
 
-        def sumOfElements(nums,target):
-            has = {}
-            for i in range(len(nums)):
-                dif = target - nums[i]
-                if dif in has:
-                    return [has[dif],i]
-                has[nums[i]] = i
-        return sumOfElements(nums,target)
-                
+        for i in range(len(nums)):
+            difference = target - nums[i]
+
+            if difference in track:
+                return [track[difference], i]
+
+            track[nums[i]] = i
+
+        
