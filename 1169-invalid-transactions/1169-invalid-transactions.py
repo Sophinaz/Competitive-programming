@@ -1,25 +1,34 @@
 class Solution:
     def invalidTransactions(self, transactions: List[str]) -> List[str]:
-        result = []
-        track = defaultdict(list)
-        added = set()
+        track = defaultdict(lambda: defaultdict(set))
+        invalids = []
 
-        for idx in range(len(transactions)):
-            tx = transactions[idx].split(',')
-            time = int(tx[1])
+        for i in range(len(transactions)):
+            # split into four 
+            name, time , amount, place = transactions[i].split(',')
+            # add them to hashmap
+            track[int(time)][name].add(place)
 
-            for j in range(time-60, time+61):
-                if j in track:
-                    for i in track[j]:
-                        if i[0] == tx[0] and i[1] != tx[3]:
-                            if idx not in added:
-                                added.add(idx)
-                                result.append(transactions[idx])
-                            result.append(transactions[i[2]])
-            if int(tx[2]) > 1000 and idx not in added:
-                result.append(transactions[idx])
-                added.add(idx)
-            temp = [tx[0], tx[3], idx]
+        for transaction in transactions:
+            isinvalid = False
+            # split into four
+            name, time, amount, place = transaction.split(',')
+            # check if amount excedes 1000 
+            if int(amount) > 1000:
+                isinvalid = True
 
-            track[time].append(temp)
-        return list(result)
+            # check for invalidity by place
+            for ti in range(-60, 61):
+                curr_time = int(time) + ti
+                # if curr_time already exisits
+                if curr_time in track:
+                    if name in track[curr_time]:
+                        if len(track[curr_time][name]) > 1 or (place not in track[curr_time][name]):
+                            isinvalid = True
+
+            # if invalid add to result
+            if isinvalid:
+                invalids.append(transaction)
+
+        return invalids
+
