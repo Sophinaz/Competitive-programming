@@ -3,14 +3,15 @@ class Solution:
         intervals.sort()
         result = []
 
-        for start, end in intervals:
+        for i in range(len(intervals)):
+            start, end = intervals[i]
             if not result:
-                result.append([start, end])
+                result.append(intervals[i])
                 continue
 
             if start <= result[-1][1]:
-                result[-1][1] = max(end, result[-1][1])
+                result[-1][1] = max(result[-1][1], end)
             else:
-                result.append([start, end])
+                result.append(intervals[i])
 
         return result
